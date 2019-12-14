@@ -24,7 +24,7 @@ db.execute <<-SQL
   );
 SQL
 
-CSV.foreach('raw_data.csv', headers: true) do |row|
+CSV.foreach('raw_data.csv', headers: true, encoding: 'utf-8') do |row|
   search = row[0...-1].reject(&:nil?).reject(&:empty?).join(' ')
 
   db.execute(
